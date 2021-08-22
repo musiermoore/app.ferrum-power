@@ -63,13 +63,13 @@ const Navigation = observer(() => {
                 {/*        : ''*/}
                 {/*    }*/}
                 {/*</Nav>*/}
-                {/*<Nav className="ml-auto">*/}
-                {/*    <Button*/}
-                {/*        className="nav-btn"*/}
-                {/*        variant={"outline-light"}*/}
-                {/*        onClick={() => history.push(CART_ROUTE)}*/}
-                {/*    >Корзина: {0}</Button>*/}
-                {/*</Nav>*/}
+                <Nav className="ml-auto">
+                    <Button
+                        className="nav-btn"
+                        variant={"outline-light"}
+                        onClick={() => history.push(CART_ROUTE)}
+                    >Корзина: {cart.quantity}</Button>
+                </Nav>
 
 
             </Container>

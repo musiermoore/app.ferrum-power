@@ -14,8 +14,8 @@ import {
 // import Admin from "./pages/Admin";
 import Shop from "./Pages/Shop";
 import Product from "./Pages/Product";
+import Cart from "./Pages/Cart";
 // import Auth from "./pages/Auth";
-// import Cart from "./pages/Cart";
 // import Registration from "./pages/Registration";
 // import AdminCategoriesCreate from "./pages/AdminCategoriesCreate";
 // import AdminCategories from "./pages/AdminCategories";
@@ -65,8 +65,8 @@ export const publicRoutes = [
         path: PRODUCT_ROUTE + '/:id',
         Component: Product
     },
-    // {
-    //     path: CART_ROUTE,
-    //     Component: Cart
-    // },
+    {
+        path: CART_ROUTE,
+        Component: Cart
+    },
 ]
