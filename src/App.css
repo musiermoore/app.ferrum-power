@@ -37,4 +37,17 @@
   }
 }
 
+.nav-logo {
+  color: rgba(255, 255, 255, .70);
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.nav-logo:hover {
+  color: rgba(255, 255, 255, .55);
+}
+
+.nav-btn {
+  margin-right: 5px;
+}
 

@@ -40,29 +40,22 @@ const Navigation = observer(() => {
                     </div>
                 </Nav>
 
-                {/*<Nav className="ml-auto">*/}
-                {/*    {user.isAuth*/}
-                {/*        ?*/}
-                {/*        <Nav className="ml-auto">*/}
-                {/*            <Button*/}
-                {/*                className="nav-btn"*/}
-                {/*                variant={"outline-light"}*/}
-                {/*                onClick={() => history.push(REGISTRATION_ROUTE)}*/}
-                {/*            >Регистрация</Button>*/}
-                {/*            <Button*/}
-                {/*                className="nav-btn"*/}
-                {/*                variant={"outline-light"}*/}
-                {/*                onClick={() => history.push(ADMIN_CATEGORIES_LIST)}*/}
-                {/*            >Категории</Button>*/}
-                {/*            <Button*/}
-                {/*                className="nav-btn"*/}
-                {/*                variant={"outline-light"}*/}
-                {/*                onClick={logOut}*/}
-                {/*            >Выход</Button>*/}
-                {/*        </Nav>*/}
-                {/*        : ''*/}
-                {/*    }*/}
-                {/*</Nav>*/}
+                <Nav className="ml-auto">
+                    {user.isAuth
+                        ?
+                        <Nav className="ml-auto">
+                            <Link className="nav-link" to={REGISTRATION_ROUTE}>Регистрация</Link>
+                            <Link className="nav-link" to={ADMIN_CATEGORIES_LIST}>Категории</Link>
+
+                            <Button
+                                className="nav-btn"
+                                variant={"outline-light"}
+                                onClick={logOut}
+                            >Выход</Button>
+                        </Nav>
+                        : ''
+                    }
+                </Nav>
                 <Nav className="ml-auto">
                     <Button
                         className="nav-btn"

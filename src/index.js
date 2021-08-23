@@ -4,6 +4,7 @@ import App from './App';
 import ShopStore from "./stores/ShopStore";
 import UserStore from "./stores/UserStore";
 import CartStore from "./stores/CartStore";
+import AdminShopStore from "./stores/AdminShopStore";
 
 export const Context = createContext(null)
 
@@ -12,6 +13,7 @@ ReactDOM.render(
         user: new UserStore(),
         shop: new ShopStore(),
         cart: new CartStore(),
+        adminShop: new AdminShopStore(),
     }}>
         <React.StrictMode>
             <App />

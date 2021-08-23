@@ -11,41 +11,37 @@ import {
     SHOP_ROUTE
 } from "./utils/consts";
 
-// import Admin from "./pages/Admin";
+import Admin from "./Pages/Admin/Admin";
 import Shop from "./Pages/Shop";
 import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
-// import Auth from "./pages/Auth";
-// import Registration from "./pages/Registration";
-// import AdminCategoriesCreate from "./pages/AdminCategoriesCreate";
-// import AdminCategories from "./pages/AdminCategories";
-// import AdminCategoriesEdit from "./pages/AdminCategoriesEdit";
+import SignIn from "./Pages/Auth/SignIn";
+import SignUp from "./Pages/Auth/SignUp";
+import AdminCategoriesCreate from "./Pages/Admin/AdminCategoriesCreate";
+import AdminCategories from "./Pages/Admin/AdminCategories";
+import AdminCategoriesEdit from "./Pages/Admin/AdminCategoriesEdit";
 
 export const authRoutes = [
-    // {
-    //     path: ADMIN_ROUTE,
-    //     Component: Admin
-    // },
-    // {
-    //     path: CREATE_CATEGORY_ROUTE,
-    //     Component: AdminCategoriesCreate
-    // },
-    // {
-    //     path: EDIT_CATEGORY_ROUTE + '/:id/edit',
-    //     Component: AdminCategoriesEdit
-    // },
-    // {
-    //     path: REGISTRATION_ROUTE,
-    //     Component: Registration
-    // },
-    // {
-    //     path: REGISTRATION_ROUTE,
-    //     Component: Registration
-    // },
-    // {
-    //     path: ADMIN_CATEGORIES_LIST,
-    //     Component: AdminCategories
-    // },
+    {
+        path: ADMIN_ROUTE,
+        Component: Admin
+    },
+    {
+        path: CREATE_CATEGORY_ROUTE,
+        Component: AdminCategoriesCreate
+    },
+    {
+        path: EDIT_CATEGORY_ROUTE + '/:id/edit',
+        Component: AdminCategoriesEdit
+    },
+    {
+        path: REGISTRATION_ROUTE,
+        Component: SignUp
+    },
+    {
+        path: ADMIN_CATEGORIES_LIST,
+        Component: AdminCategories
+    },
 ]
 
 export const publicRoutes = [
@@ -57,10 +53,10 @@ export const publicRoutes = [
         path: SHOP_CATEGORY_ROUTE + '/:id',
         Component: Shop
     },
-    // {
-    //     path: LOGIN_ROUTE,
-    //     Component: Auth
-    // },
+    {
+        path: LOGIN_ROUTE,
+        Component: SignIn
+    },
     {
         path: PRODUCT_ROUTE + '/:id',
         Component: Product

@@ -21,10 +21,9 @@ const Order = () => {
     const [products, setProducts] = useState([])
 
     const _makeOrder = async () => {
-        setProducts(cart.cartProductsForOrder)
-        console.log(products)
+
         try {
-            const response = await makeOrder(name, phone, email, description, address, products)
+            const response = await makeOrder(name, phone, email, description, address, cart.cartProductsForOrder)
             console.log(response);
         } catch (e) {
             console.log(e.response.data.errors)
