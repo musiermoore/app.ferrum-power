@@ -17,7 +17,7 @@ const AdminCategories = observer(() => {
         fetchCategoriesForAdmin().then(data => {
             adminShop.setCategories(data.categories)
         })
-    }, [adminShop.needUpdated])
+    }, [adminShop.needUpdatedCategory])
 
     return (
         <Container>

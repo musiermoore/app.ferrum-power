@@ -9,8 +9,13 @@ export default class AdminShopStore {
         // ];
         this._categories = []
         this._category = {}
+        this._needUpdateCategory = true;
+
+        this._products = []
+        this._product = {}
+        this._needUpdateProduct = true;
+
         this._selectedCategory = {};
-        this._needUpdated = true;
         makeAutoObservable(this)
     }
 
@@ -31,12 +36,25 @@ export default class AdminShopStore {
     }
 
     deleteCategoryFromStore(category) {
-        this.needUpdatedCategoriesList(true);
+        this.setUpdatedCategoriesList(true);
         this._categories = this._categories.filter(element => element.id !== category.category.id);
     }
 
-    needUpdatedCategoriesList(bool) {
-        this._needUpdated = bool;
+    deleteProductFromStore(product) {
+        this.setUpdatedProductsList(true);
+        this._products = this._products.filter(element => element.id !== product.id);
+    }
+
+    setUpdatedCategoriesList(bool) {
+        this._needUpdateCategory = bool;
+    }
+
+    setUpdatedProductsList(bool) {
+        this._needUpdateProduct = bool;
+    }
+
+    setProduct(product) {
+        this._product = product;
     }
 
     get categories() {
@@ -51,12 +69,20 @@ export default class AdminShopStore {
         return this._products;
     }
 
+    get product() {
+        return this._product;
+    }
+
     get selectedCategory() {
         return this._selectedCategory;
     }
 
-    get needUpdated() {
-        return this._needUpdated;
+    get needUpdatedCategory() {
+        return this._needUpdateCategory;
+    }
+
+    get needUpdatedProduct() {
+        return this._needUpdateProduct;
     }
 
 }

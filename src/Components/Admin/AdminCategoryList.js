@@ -11,7 +11,7 @@ const AdminProductsList = observer(() => {
 
     useEffect(() => {
         setCategories(adminShop.categories);
-        adminShop.needUpdatedCategoriesList(false)
+        adminShop.setUpdatedCategoriesList(false)
     }, [adminShop.categories]);
 
     return (

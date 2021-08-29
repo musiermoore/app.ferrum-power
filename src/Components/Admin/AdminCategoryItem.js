@@ -26,6 +26,7 @@ const AdminCategoryItem = ({category}) => {
             <td>{category.category.title}</td>
             <td>{category.category.parent_id}. {category.category.parent_name}</td>
             <td>{category.category.slug}</td>
+
             <td className="">
                 <div className="btn-delete mr-2">
                     <Button

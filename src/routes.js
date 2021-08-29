@@ -4,7 +4,7 @@ import {
     ADMIN_ROUTE,
     CART_ROUTE,
     CREATE_CATEGORY_ROUTE,
-    CREATE_PRODUCT_ROUTE, EDIT_CATEGORY_ROUTE,
+    CREATE_PRODUCT_ROUTE, EDIT_CATEGORY_ROUTE, EDIT_PRODUCT_ROUTE,
     LOGIN_ROUTE,
     PRODUCT_ROUTE,
     REGISTRATION_ROUTE, SHOP_CATEGORY_ROUTE,
@@ -20,6 +20,9 @@ import SignUp from "./Pages/Auth/SignUp";
 import AdminCategoriesCreate from "./Pages/Admin/AdminCategoriesCreate";
 import AdminCategories from "./Pages/Admin/AdminCategories";
 import AdminCategoriesEdit from "./Pages/Admin/AdminCategoriesEdit";
+import AdminProducts from "./Pages/Admin/AdminProducts";
+import AdminProductsCreate from "./Pages/Admin/AdminProductsCreate";
+import AdminProductsEdit from "./Pages/Admin/AdminProductsEdit";
 
 export const authRoutes = [
     {
@@ -41,6 +44,19 @@ export const authRoutes = [
     {
         path: ADMIN_CATEGORIES_LIST,
         Component: AdminCategories
+    },
+    // admin products
+    {
+        path: ADMIN_PRODUCT_LIST,
+        Component: AdminProducts
+    },
+    {
+        path: CREATE_PRODUCT_ROUTE,
+        Component: AdminProductsCreate
+    },
+    {
+        path: EDIT_PRODUCT_ROUTE + '/:id/edit',
+        Component: AdminProductsEdit
     },
 ]
 

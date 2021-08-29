@@ -46,6 +46,7 @@ const Navigation = observer(() => {
                         <Nav className="ml-auto">
                             <Link className="nav-link" to={REGISTRATION_ROUTE}>Регистрация</Link>
                             <Link className="nav-link" to={ADMIN_CATEGORIES_LIST}>Категории</Link>
+                            <Link className="nav-link" to={ADMIN_PRODUCT_LIST}>Продукты</Link>
 
                             <Button
                                 className="nav-btn"

@@ -73,6 +73,7 @@ const AdminCategoriesEdit = () => {
             //
             // })
             console.log(errors)
+            alert("Ошибка. Заполните поля")
         }
     }
 
