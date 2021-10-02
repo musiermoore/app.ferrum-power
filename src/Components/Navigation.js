@@ -4,7 +4,9 @@ import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {Link, NavLink, useHistory} from "react-router-dom";
 import {
     ADMIN_CATEGORIES_LIST,
+    ADMIN_ORDERS_LIST,
     ADMIN_PRODUCT_LIST,
+    ADMIN_USERS_LIST,
     CART_ROUTE,
     LOGIN_ROUTE,
     REGISTRATION_ROUTE,
@@ -47,6 +49,8 @@ const Navigation = observer(() => {
                             <Link className="nav-link" to={REGISTRATION_ROUTE}>Регистрация</Link>
                             <Link className="nav-link" to={ADMIN_CATEGORIES_LIST}>Категории</Link>
                             <Link className="nav-link" to={ADMIN_PRODUCT_LIST}>Продукты</Link>
+                            <Link className="nav-link" to={ADMIN_USERS_LIST}>Пользователи</Link>
+                            <Link className="nav-link" to={ADMIN_ORDERS_LIST}>Заказы</Link>
 
                             <Button
                                 className="nav-btn"
