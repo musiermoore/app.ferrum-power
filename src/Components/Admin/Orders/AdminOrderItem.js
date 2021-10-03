@@ -26,7 +26,6 @@ const AdminOrderItem = ({order}) => {
             <td>{order.order.name}</td>
             <td>{order.order.phone}</td>
             <td>{order.order.email}</td>
-            <td>{order.order.description}</td>
             <td>{order.order.address}</td>
             <td style={{backgroundColor: '#' + order.order.order_status.color }}>{order.order.order_status.status}</td>
             <td>
@@ -44,20 +43,13 @@ const AdminOrderItem = ({order}) => {
             </td>
 
             <td className="">
-                <div className="btn-delete mr-2">
-                    <Button
-                        className={"mt-2 p-1"}
-                        variant={"danger"}
-                        onClick={() => destroyOrder(order)}
-                    >Удалить</Button>
-                </div>
 
                 <div className="btn-edit">
                     <Button
                         className={"mt-2 p-1"}
                         variant={"primary"}
                         onClick={() =>history.push(`${EDIT_ORDER_ROUTE}/${order.order.id}/info`)}
-                    >Изменить</Button>
+                    >Открыть</Button>
                 </div>
             </td>
         </tr>

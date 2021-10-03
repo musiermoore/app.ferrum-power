@@ -23,7 +23,6 @@ const AdminOrderList = observer(() => {
                 <th>Имя заказчика</th>
                 <th>Телефон</th>
                 <th>Почта</th>
-                <th>Описание</th>
                 <th>Адрес</th>
                 <th>Статус заказа</th>
                 <th>Оператор</th>

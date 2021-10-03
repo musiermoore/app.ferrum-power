@@ -2,9 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useHistory, useParams} from "react-router-dom";
 import {Context} from "../../../index";
 import {Button, Container, Spinner, Table} from "react-bootstrap";
-import {EDIT_ORDER_ROUTE} from "../../../utils/consts";
+import {ADMIN_ORDERS_LIST, EDIT_ORDER_ROUTE} from "../../../utils/consts";
 import {deleteOrder, getOrderForEdit} from "../../../apis/adminOrderAPI";
-import {getProductForEdit} from "../../../apis/adminCategoryAPI";
 
 const AdminOrderInfo = () => {
     const history = useHistory()
@@ -27,12 +26,15 @@ const AdminOrderInfo = () => {
     }, [])
 
     const destroyOrder = (order) => {
-        let isDeleteProduct = window.confirm(`Заказ "${order.order.id}. ${order.order.title}" будет удален. \nПродолжить?`)
+        let isDeleteProduct = window.confirm(`Заказ №${order.order.id} от ${order.order.name} будет удален. \nПродолжить?`)
 
         if (isDeleteProduct) {
             deleteOrder(order.order.id).then(data => {
-                adminOrder.deleteUserFromStore(order);
+                adminOrder.deleteOrderFromStore(order);
+                history.push(ADMIN_ORDERS_LIST);
             })
+
+
         }
     }
 
@@ -43,8 +45,8 @@ const AdminOrderInfo = () => {
     return (
         <Container>
             <div className="order-info">
-                <div className="order__number">
-                    Номер заказа №{order.order.id}
+                <div className="order__number fw-bold">
+                    Заказ №{order.order.id}
                 </div>
                 <div className="order__customer-name">
                     Имя заказчика: {order.order.name}
@@ -79,48 +81,60 @@ const AdminOrderInfo = () => {
 
                 <div className="order__products mt-2">
 
-                    <Table striped bordered hover>
-                        <caption>Список продуктов</caption>
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Название товара</th>
-                            <th>Цена за штуку</th>
-                            <th>Количество</th>
-                            <th>Полная стоимость</th>
-                            <th>Изображение</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {order.products.map((product, key) =>
-                            <tr className="order__product">
-                                <td>{product.product_info.id}</td>
-                                <td>{product.product_info.title}</td>
-                                <td>{product.product_info.price} р.</td>
-                                <td><input className={"form-control"} type="number" value={product.quantity}/> шт.
-                                    <div>
-                                        <button
-                                            className="btn btn-success "
-                                            onClick={product.quantity += 1}
-                                        >+</button> <span></span>
-                                        <button
-                                            className="btn btn-danger"
-                                        >-</button>
-                                    </div></td>
-                                <td>{product.full_price} р.</td>
-                                <td>
-                                    <img
-                                        src={process.env.REACT_APP_IMAGE_URL + product.product_info.image_path}
-                                        alt="Изображение товара"
-                                        width="200"
-                                        height="200"
-                                    />
-                                </td>
+                    {order.products.length ?
+                        <Table striped bordered hover>
+                            <caption>Список продуктов</caption>
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Название товара</th>
+                                <th>Цена за штуку</th>
+                                <th>Количество</th>
+                                <th>Полная стоимость</th>
+                                <th>Изображение</th>
                             </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                order.products.map((product, key) =>
+                                    <tr className="order__product">
+                                        <td>{product.product_info.id}</td>
+                                        <td>{product.product_info.title}</td>
+                                        <td>{product.product_info.price} р.</td>
+                                        <td><input className={"form-control"} type="number"
+                                                   value={product.quantity}/> шт.
+                                            <div>
+                                                <button
+                                                    className="btn btn-success "
+                                                    onClick={product.quantity += 1}
+                                                >+
+                                                </button>
+                                                <span></span>
+                                                <button
+                                                    className="btn btn-danger"
+                                                >-
+                                                </button>
+                                            </div></td>
+                                        <td>{product.full_price} р.</td>
+                                        <td>
+                                            <img
+                                                src={process.env.REACT_APP_IMAGE_URL + product.product_info.image_path}
+                                                alt="Изображение товара"
+                                                width="200"
+                                                height="200"
+                                            />
+                                        </td>
+                                    </tr>
+                                )
+                            }
 
-                        )}
-                        </tbody>
-                    </Table>
+                            </tbody>
+                        </Table>
+                        :
+                        <div className="alert alert-info">
+                            Товаров нет.
+                        </div>
+                    }
                 </div>
 
 

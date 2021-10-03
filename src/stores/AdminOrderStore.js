@@ -21,8 +21,12 @@ export default class AdminOrderStore {
         this._needUpdateOrder = bool;
     }
 
+    setNeedUpdateOrder(bool) {
+        this._needUpdateOrder = bool;
+    }
+
     deleteOrderFromStore(order) {
-        this.needUpdateOrder(true);
+        this.setNeedUpdateOrder(true);
         this._orders = this._orders.filter(element => element.id !== order.id);
     }
 

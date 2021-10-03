@@ -19,6 +19,6 @@ export const getOrderForEdit = async (id) => {
 }
 
 export const deleteOrder = async (id) => {
-    const {data} = await $authHost.delete('admin/users/' + id)
+    const {data} = await $authHost.delete('admin/orders/' + id)
     return data
 }
