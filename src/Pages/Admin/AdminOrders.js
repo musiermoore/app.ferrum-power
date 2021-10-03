@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
-import {CREATE_ORDER_ROUTE} from "../../utils/consts";
+import {CART_ROUTE, CREATE_ORDER_ROUTE} from "../../utils/consts";
 import {useHistory} from "react-router-dom";
 import AdminOrderList from "../../Components/Admin/Orders/AdminOrderList";
 import {fetchOrdersForAdmin} from "../../apis/adminOrderAPI";
@@ -30,7 +30,7 @@ const AdminUsers = observer(() => {
                         <Button
                             className="nav-btn"
                             variant={"primary"}
-                            onClick={() => history.push(CREATE_ORDER_ROUTE)}
+                            onClick={() => history.push(CART_ROUTE)}
                         >Создать заказ</Button>
                     </div>
 

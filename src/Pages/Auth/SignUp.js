@@ -21,14 +21,19 @@ const SignUp = () => {
     const [response, setResponse] = useState('');
 
     const signUp = async () => {
-        setResponse('')
-        try {
-            let response = await registration(lastname, firstname, patronymic, login, password, passwordConfirmation, role)
-            setResponse(response);
-        } catch (e) {
-            setResponse(e.response.data);
-        }
+        registration(lastname, firstname, patronymic, login, password, passwordConfirmation, role)
+            .then((response) => {
+                setResponse(response);
+            })
+            .catch(error => {
+                let responseCode = error.response.status;
+                let data = error.response.data;
 
+                if (responseCode === 422) {
+                    setResponse(data.errors[0]);
+                }
+                // setResponse(e.response.data);
+            })
     }
 
     return (
@@ -37,34 +42,41 @@ const SignUp = () => {
             style={{height: window.innerHeight - 54}}
         >
             <Card  style={{width: 600}} className="p-5">
+
+
                 <h2 className="m-auto">Регистрация</h2>
                 <Form className="d-flex flex-column">
                     <Form.Control
                         className="mt-3"
+                        name="lastname"
                         placeholder="Введите фамилию"
                         value={lastname}
                         onChange={e => setLastname(e.target.value)}
                     />
                     <Form.Control
                         className="mt-3"
+                        name="firstname"
                         placeholder="Введите имя"
                         value={firstname}
                         onChange={e => setFirstname(e.target.value)}
                     />
                     <Form.Control
                         className="mt-3"
+                        name="patronymic"
                         placeholder="Введите отчество"
                         value={patronymic}
                         onChange={e => setPatronymic(e.target.value)}
                     />
                     <Form.Control
                         className="mt-3"
+                        name="login"
                         placeholder="Введите логин"
                         value={login}
                         onChange={e => setLogin(e.target.value)}
                     />
                     <Form.Control
                         className="mt-2"
+                        name="password"
                         placeholder="Введите пароль"
                         type="password"
                         value={password}
@@ -72,6 +84,7 @@ const SignUp = () => {
                     />
                     <Form.Control
                         className="mt-2"
+                        name="password_confirmation"
                         placeholder="Введите повторно пароль"
                         type="password"
                         value={passwordConfirmation}
@@ -79,6 +92,7 @@ const SignUp = () => {
                     />
                     {roles.map((role, key) => (
                         <Form.Check
+                            key={key}
                             type="radio"
                             name="role"
                             id={`role-${key}`}
@@ -93,7 +107,7 @@ const SignUp = () => {
                         onClick={signUp}
                     >Войти</Button>
                 </Form>
-                {response !== '' ?
+                {response != false ?
                     <div>
                         {response.message}
                         <div className="div">
@@ -107,7 +121,6 @@ const SignUp = () => {
                         </div>
                     </div>
                     : ''
-
                 }
 
             </Card>

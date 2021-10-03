@@ -11,7 +11,6 @@ const Cart = observer(() => {
     return (
         <Container>
             <div>
-
                 <CartList/>
                 <Order/>
             </div>

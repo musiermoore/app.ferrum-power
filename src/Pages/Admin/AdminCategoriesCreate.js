@@ -28,18 +28,15 @@ const AdminCategoriesCreate = () => {
 
     const storeCategory = async () => {
         try {
-            await createCategory(parentId, title, slug, description, imagePath)
-            alert(`Категори "${title}" создана`)
-        } catch (e) {
-            let errors = e.response.data.errors;
+            let response = await createCategory(parentId, title, slug, description, imagePath)
 
+            setResponse(response)
+        } catch (error) {
+            let data = error.response.data;
 
-            // errors.forEach((error, key) => {
-            //     console.log(error)
-            // })
-
-
-
+            if (error.response.status === 422) {
+                setResponse(data.errors[0])
+            }
         }
     }
 
@@ -94,14 +91,16 @@ const AdminCategoriesCreate = () => {
                         onClick={storeCategory}
                     >Создать</Button>
                 </Form>
-                {response !== '' ?
+                {response != false ?
                     <div>
                         {response.message}
                         <div className="div">
                             {response.errors ?
                                 Object.entries(response.errors).map((value, key) => {
                                     <div>
-                                        {key}
+                                        {
+                                            key
+                                        }
                                     </div>
                                 }) : ''
                             }

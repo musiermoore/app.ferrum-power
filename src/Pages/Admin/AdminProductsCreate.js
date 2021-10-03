@@ -30,12 +30,11 @@ const AdminCategoriesCreate = () => {
 
     const storeCategory = async () => {
         try {
-            await createProduct(categoryId, title, slug, description, imagePath, stockAvailability, price)
-            alert(`Продукт "${title}" создан`)
+            let response = await createProduct(categoryId, title, slug, description, imagePath, stockAvailability, price)
+            setResponse(response)
         } catch (e) {
-            let errors = e.response.data.errors;
-            console.log(errors);
-            alert('Ошибка');
+            let data = e.response.data;
+            setResponse(data.errors[0]);
         }
     }
 

@@ -24,9 +24,9 @@ const Order = () => {
 
         try {
             const response = await makeOrder(name, phone, email, description, address, cart.cartProductsForOrder)
-            console.log(response);
+            alert(response.message);
         } catch (e) {
-            console.log(e.response.data.errors)
+            alert(e.response.data.errors[0].message)
         }
 
     }
